@@ -16,7 +16,7 @@ library(yaml)
 library(purrr)
 library(stringr)
 
-source("~/medicaid/tmp/R/helpers.R")
+source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 
 dec17 <- load_data("hillary_dec17_washout_continuous_enrollment_dts.fst", drv_root) |>
   distinct()
@@ -121,7 +121,8 @@ exclusion_codes <-
 exclusion_codes <- 
   fselect(cohort, BENE_ID) |> 
   join(exclusion_codes, how = "left") |> 
-  mutate(across(c(starts_with("exclusion")) , ~ replace_na(.x))) 
+  # mutate(across(c(starts_with("exclusion")) , ~ replace_na(.x))) 
+  mutate(exclusion_dual_eligible_1 = ifelse(is.na(exclusion_dual_eligible_1), 0, exclusion_dual_eligible_1))
 
 # income_codes <- exclusion_codes |>
 #   fselect(BENE_ID, probable_high_income_cal)
@@ -152,7 +153,7 @@ exclusion_dual_eligible <-
   fselect(BENE_ID, exclusion_dual_eligible) |> 
   distinct() |> 
   join(fselect(cohort, BENE_ID), how = "right") |> 
-  fmutate(exclusion_dual_eligible = replace_na(as.numeric(exclusion_dual_eligible)))
+  fmutate(exclusion_dual_eligible = ifelse(is.na(exclusion_dual_eligible), 0, 1))
 
 # join --------------------------------------------------------------------
 
@@ -174,3 +175,12 @@ exclusions <- cohort |>
   left_join(exclusions)
 
 write_data(exclusions, "hillary_washout_continuous_enrollment_opioid_requirements_tafdebse_exclusions.fst", drv_root)
+
+
+# Remove observations with exclusions
+cohort <- filter(exclusions, if_all(c("exclusion_maryland",
+                                  "exclusion_age",
+                                  "exclusion_dual_eligible"), \(x) x == 0)) |>
+  select(BENE_ID, index_dt, exclusion_nov17, exclusion_jul4)
+
+write_data(cohort, "hillary_cohort_with_exclusions.fst", drv_root)

@@ -1,0 +1,54 @@
+Psychiatric Diagnostic Evaluation:
+    CPT:
+        # https://www.cms.gov/medicare-coverage-database/view/article.aspx?articleid=56937&ver=29&keyword=&keywordType=starts&areaId=all&docType=6%2c3%2c5%2c1%2cF%2cP&contractOption=all&hcpcsOption=code&hcpcsStartCode=90837&hcpcsEndCode=90837&sortBy=title&bc=1
+        '90785': Psytx complex interactive.
+        '90791': PSYCHIATRIC DIAGNOSTIC EVALUATION.
+        '90792': PSYCHIATRIC DIAGNOSTIC EVALUATION WITH MEDICAL SERVICES
+        '90865': NARCOSYNTHESIS FOR PSYCHIATRIC DIAGNOSTIC AND THERAPEUTIC PURPOSES (EG, SODIUM AMOBARBITAL (AMYTAL) INTERVIEW)
+        '90885': PSYCHIATRIC EVALUATION OF HOSPITAL RECORDS, OTHER PSYCHIATRIC REPORTS, PSYCHOMETRIC AND/OR PROJECTIVE TESTS, AND OTHER ACCUMULATED DATA FOR MEDICAL DIAGNOSTIC PURPOSES
+        '90887': INTERPRETATION OR EXPLANATION OF RESULTS OF PSYCHIATRIC, OTHER MEDICAL EXAMINATIONS AND PROCEDURES, OR OTHER ACCUMULATED DATA TO FAMILY OR OTHER RESPONSIBLE PERSONS, OR ADVISING THEM HOW TO ASSIST PATIENT
+        '90889': PREPARATION OF REPORT OF PATIENT'S PSYCHIATRIC STATUS, HISTORY, TREATMENT, OR PROGRESS (OTHER THAN FOR LEGAL OR CONSULTATIVE PURPOSES) FOR OTHER INDIVIDUALS, AGENCIES, OR INSURANCE CARRIERS
+        '90899': UNLISTED PSYCHIATRIC SERVICE OR PROCEDURE
+    ICD10:
+        F99: Mental disorder, not otherwise specified
+
+Primary Care:
+    CPT:
+        # https://www.cms.gov/medicare-coverage-database/view/article.aspx?articleId=52985
+        '99221': 1st hosp ip/obs sf/low 40.
+        '99222': 1st hosp ip/obs moderate 55.
+        '99223': 1st hosp ip/obs high 75.
+        '99231': Sbsq hosp ip/obs sf/low 25.
+        '99232': Sbsq hosp ip/obs moderate 35.
+        '99233': Sbsq hosp ip/obs high 50.
+        '99234': Hosp ip/obs sm dt sf/low 45.
+        '99235': Hosp ip/obs same date mod 70.
+        '99236': Hosp ip/obs same date hi 85.
+        '99238': Hosp ip/obs dschrg mgmt 30/<.
+        '99239': Hosp ip/obs dschrg mgmt >30.
+    HCPC:
+        G0316:	Prolong inpt eval add15 m
+
+Addiction Medicines:
+    CPT:
+    
+    HCPC:
+        # https://www.cms.gov/files/document/chapter-39-opioid-treatment-programs-otps.pdf
+        G2067: Medication assisted treatment, methadone; weekly bundle including dispensing and/or administration, substance use counseling, individual and group therapy, and toxicology testing, if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program).
+        G2068: Medication assisted treatment, buprenorphine (oral); weekly bundle including dispensing and/or administration, substance use counseling, individual and group therapy, and toxicology testing if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program).
+        G2069: Medication assisted treatment, buprenorphine (injectable); weekly bundle including dispensing and/or administration, substance use counseling, individual and group therapy, and toxicology testing if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program).
+        G2070: Medication assisted treatment, buprenorphine (implant insertion); weekly bundle including dispensing and/or administration, substance use counseling, individual and group therapy, and toxicology testing if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program).
+        G2071: Medication assisted treatment, buprenorphine (implant removal); weekly bundle including dispensing and/or administration, substance use counseling, individual and group therapy, and toxicology testing if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program).
+        G2072: Medication assisted treatment, buprenorphine (implant insertion and removal); weekly bundle including dispensing and/or administration, substance use counseling, individual and group therapy, and toxicology testing if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program).
+        G2073: Medication assisted treatment, naltrexone; weekly bundle including dispensing and/or administration, substance use counseling, individual and group therapy, and toxicology testing if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program).
+        G2074: Medication assisted treatment, weekly bundle not including the drug, including substance use counseling, individual and group therapy, and toxicology testing if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program).
+        G2075: Medication assisted treatment, medication not otherwise specified; weekly bundle including dispensing and/or administration, substance use counseling, individual and group therapy, and toxicology testing, if performed (provision of the services by a Medicare-enrolled Opioid Treatment Program). 
+        G2076: Intake activities, including initial medical examination that is a complete, fully documented physical evaluation and initial assessment conducted by a program physician or a primary care physician, or an authorized healthcare professional under the supervision of a program physician or qualified personnel that includes preparation of a treatment plan that includes the patient’s short-term goals and the tasks the patient must perform to complete the short-term goals; the patient’s requirements for education, vocational rehabilitation, and employment; and the medical, psycho- social, economic, legal, or other supportive services that a patient needs, conducted by qualified personnel (provision of the services by a Medicare-enrolled Opioid Treatment Program); List separately in addition to code for primary procedure.
+        G2077: Periodic assessment; assessing periodically by qualified personnel to determine the most appropriate combination of services and treatment (provision of the services by a Medicare-enrolled Opioid Treatment Program); List separately in addition to code for primary procedure.
+        G2078: Take-home supply of methadone; up to 7 additional day supply (provision of the services by a Medicare-enrolled Opioid Treatment Program); List separately in addition to code for primary procedure. 
+        G2079: Take-home supply of buprenorphine (oral); up to 7 additional day supply (provision of the services by a Medicare-enrolled Opioid Treatment Program); List separately in addition to code for primary procedure.
+        G2080: Each additional 30 minutes of counseling or group or individual therapy in a week of medication assisted treatment, (provision of the services by a Medicare-enrolled Opioid Treatment Program); List separately in addition to code for primary procedure.
+        G2215: Take-home supply of nasal naloxone; 2-pack of 4mg per 0.1 mL nasal spray (provision of the services by a Medicare-enrolled Opioid Treatment Program); List separately in addition to code for primary procedure.
+        G2216: Take-home supply of injectable naloxone (provision of the services by a Medicareenrolled Opioid Treatment Program); List separately in addition to code for primary procedure.
+        G1028: Take-home supply of nasal naloxone; 2-pack of 8mg per 0.1 mL nasal spray (provision of the services by a Medicare-enrolled Opioid Treatment Program); List separately in addition to code for primary procedure.
+        
