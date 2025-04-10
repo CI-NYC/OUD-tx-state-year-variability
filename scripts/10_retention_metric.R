@@ -36,8 +36,8 @@ moud <- moud[, .(BENE_ID, moud_start_dt, moud_end_dt)] |>
 
 moud <- moud |>
   left_join(cohort |> select(BENE_ID, index_dt, follow_up_end_dt)) |>
-  filter(moud_start_dt >= index_dt) #|>
-  # slice(1:1000)
+  filter(moud_end_dt >= index_dt) #|>
+  # slice(1:10000)
 
 # Calculate duration -----------------------------------------------------
 
@@ -114,10 +114,11 @@ out <- foreach(data = moud$data,
 
 plan(sequential)
 
-cohort <- cohort |>
+cohorcot <- cohort |>
   left_join(out) |>
-  mutate(moud_retention = ifelse(!is.na(follow_up_end_dt) & 
-                                   follow_up_end_dt == exposure_end_dt, 1, 0))
+  mutate(retention_metric = ifelse(!is.na(follow_up_end_dt) & 
+                                   follow_up_end_dt == exposure_end_dt, 1, 0),
+         retention_metric = ifelse(is.na(follow_up_end_dt), 0, retention_metric))
 
 write_data(cohort, "retention_metric.fst", drv_root)
 

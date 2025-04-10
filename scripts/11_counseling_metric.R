@@ -14,7 +14,7 @@ library(lubridate)
 library(data.table)
 library(yaml)
 
-source("~/medicaid/OUD_tx_state_year_variability//R/helpers.R")
+source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 
 iph <- open_iph()
 otl <- open_otl()

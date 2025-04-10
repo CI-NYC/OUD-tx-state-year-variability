@@ -176,7 +176,7 @@ exclusions <- cohort |>
 
 write_data(exclusions, "hillary_washout_continuous_enrollment_opioid_requirements_tafdebse_exclusions.fst", drv_root)
 
-
+exclusions <- load_data("hillary_washout_continuous_enrollment_opioid_requirements_tafdebse_exclusions.fst", drv_root)
 # Remove observations with exclusions
 cohort <- filter(exclusions, if_all(c("exclusion_maryland",
                                   "exclusion_age",

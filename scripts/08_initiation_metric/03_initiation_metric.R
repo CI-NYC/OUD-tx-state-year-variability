@@ -26,4 +26,4 @@ moud <-
   join(cohort, moud, how = "left") |> 
   fmutate(moud_initiation = replace_na(moud_initiation, 0))
 
-write_data(moud, "initation_metric.fst", drv_root)
+write_data(moud, "initiation_metric.fst", drv_root)
