@@ -17,8 +17,21 @@ source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 # Source ICD codes
 codes <- read_yaml("~/medicaid/low-back-therapies/data/public/oud_codes.yml")$hillary
 
-# load cohort
-# cohort <- load_data("pain_washout_continuous_enrollment_opioid_requirements.fst", file.path(drv_root, "exclusion"))
+########################################## Load moud data
+bup <- load_data("moud_bup_intervals.fst", drv_root)
+methadone <- load_data("moud_methadone_intervals.fst", drv_root)
+naltrexone <- load_data("moud_nal_intervals.fst", drv_root)
+
+moud <- rbind(bup, methadone, naltrexone)
+
+setDT(moud)
+setkey(moud, BENE_ID)
+
+moud <- moud[, .(BENE_ID, moud_start_dt, moud_end_dt)] |>
+  arrange(BENE_ID, moud_start_dt, moud_end_dt) |>
+  distinct()
+##########################################
+
 
 # Read in IPH dataset
 iph <- open_iph()
@@ -64,7 +77,7 @@ oud_hillary <-
 #   inner_join(oud_hillary, cohort) |> 
 #   filter(oud_hillary_dt %within% interval(washout_start_dt, exposure_end_dt + 455))
 
-write_data(oud_hillary, "all_oud_hillary.fst", drv_root)
+# write_data(oud_hillary, "all_oud_hillary.fst", drv_root)
 
 
 
@@ -72,7 +85,7 @@ write_data(oud_hillary, "all_oud_hillary.fst", drv_root)
 # 1st: ends on December 17th
 # 2nd: ends on November 17th
 # 3rd: ends on July 4th
-
+# oud_hillary <- load_data("all_oud_hillary.fst", drv_root)
 
 # 1st --------------------
 oud_hillary_dec17 <- oud_hillary |>
@@ -98,6 +111,24 @@ cohort_oud_hillary <- cohort_dec17 |>
          exclusion_dec17_washout = 0, 
          exclusion_nov17_washout = ifelse(index_dt > as.Date("2019-11-17"), 1, 0), # eligible for the 44 day follow-up period?
          exclusion_jul4_washout = ifelse(index_dt > as.Date("2019-07-04"), 1, 0)) # eligible for the 180 day follow-up period?
+
+
+############### Adding additional restriction to the jul4 cohort, where an MOUD claim must exist between OUD diagnosis and Jul 4
+
+# filter to MOUD claims that come after OUD diagnosis
+cohort_jul4_moud_requirement <- cohort_oud_hillary |>
+  left_join(moud) |>
+  filter(moud_start_dt >= index_dt) |>
+  as.data.table()
+
+# filter to those who initiated MOUD on or before July 4th
+cohort_jul4_moud_requirement <- cohort_jul4_moud_requirement[, .SD[min(moud_start_dt) <= as.Date("2019-07-04")], by = BENE_ID] |>
+  pull(BENE_ID) |>
+  unique()
+
+# modify inclusion flag for July 4th cohort
+cohort_oud_hillary <- cohort_oud_hillary |>
+  mutate(exclusion_jul4_washout = ifelse(BENE_ID %in% cohort_jul4_moud_requirement, 0, 1))
 
 write_data(cohort_oud_hillary, "cohort_oud_hillary.fst", drv_root)
 

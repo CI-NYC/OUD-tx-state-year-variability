@@ -18,23 +18,10 @@ library(stringr)
 
 source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 
-dec17 <- load_data("hillary_dec17_washout_continuous_enrollment_dts.fst", drv_root) |>
-  distinct()
-nov17 <- load_data("hillary_nov17_washout_continuous_enrollment_dts.fst", drv_root) |>
-  mutate(exclusion_nov17 = 0) |>
-  distinct()
-jul4 <- load_data("hillary_jul4_washout_continuous_enrollment_dts.fst", drv_root) |>
-  mutate(exclusion_jul4 = 0) |>
-  distinct()
+washout_continuous_enrollment <- load_data("hillary_washout_continuous_enrollment_dts.fst", drv_root)
 
-cohort <- dec17 |>
-  # group_by(BENE_ID) |>
-  # filter(index_dt == min(index_dt))|>
-  # distinct() |>
-  left_join(nov17) |>
-  left_join(jul4) |>
-  mutate(exclusion_nov17 = ifelse(is.na(exclusion_nov17), 1, 0),
-         exclusion_jul4 = ifelse(is.na(exclusion_jul4), 1, 0))
+cohort <- load_data("cohort_oud_hillary.fst", drv_root) |>
+  filter(BENE_ID %in% washout_continuous_enrollment$BENE_ID)
 
 codes <- read_yaml("~/medicaid/low-back-therapies/data/public/eligibility_codes.yml")
 
@@ -121,7 +108,7 @@ exclusion_codes <-
           # exclusion_cancer = code %in% codes$cancer, 
           exclusion_dual_eligible_1 = code %in% codes$dual_eligibility#,
           # probable_high_income_cal = code %in% codes$income
-          ) |> 
+  ) |> 
   mutate(across(c(starts_with("exclusion")), as.numeric))
 
 exclusion_codes <- 
@@ -180,10 +167,13 @@ exclusions <-
 exclusions <- cohort |>
   left_join(exclusions)
 
+# write_data(exclusions, "hillary_washout_continuous_enrollment_opioid_requirements_tafdebse_exclusions.fst", drv_root)
+
+# exclusions <- load_data("hillary_washout_continuous_enrollment_opioid_requirements_tafdebse_exclusions.fst", drv_root)
 # Remove observations with exclusions
 cohort <- filter(exclusions, if_all(c("exclusion_maryland",
-                                  "exclusion_age",
-                                  "exclusion_dual_eligible"), \(x) x == 0)) |>
-  select(BENE_ID, index_dt, exclusion_nov17, exclusion_jul4)
+                                      "exclusion_age",
+                                      "exclusion_dual_eligible"), \(x) x == 0)) |>
+  select(BENE_ID, index_dt, exclusion_nov17_washout, exclusion_jul4_washout)
 
-write_data(cohort, "hillary_cohort_with_exclusions.fst", drv_root)
+write_data(cohort, "hillary_cohort_with_exclusions_noncontinuous_enrollment.fst", file.path(drv_root, "modelling"))

@@ -38,11 +38,11 @@ moud <- moud |>
   left_join(cohort |> select(BENE_ID, index_dt)) |>
   filter(moud_start_dt >= index_dt)
 
-moud <- moud[, .SD[min(moud_start_dt) <= as.Date("2019-07-05")], by = BENE_ID]
+moud <- moud[, .SD[min(moud_start_dt) <= as.Date("2019-07-04")], by = BENE_ID]
 
 moud_dates <- moud[, .(
   moud_start_dt = min(moud_start_dt), 
-  follow_up_until_dt = min(moud_start_dt) + days(179)
+  follow_up_until_dt = min(moud_start_dt) + days(180)
 ), by = BENE_ID]
 
 # Calculate duration -----------------------------------------------------
@@ -63,7 +63,7 @@ get_duration <- function(data, gap = 7) {
   ][, seq_len := 1] |> distinct()
   
   # all dates in hypothetical exposure period
-  all_dates_exposure_period <- data[, .(date = seq(moud_start_dt, moud_start_dt %m+% days(179), by = "1 day")), 
+  all_dates_exposure_period <- data[, .(date = seq(moud_start_dt, moud_start_dt %m+% days(180), by = "1 day")), 
                                     by = .(seq_len(nrow(data)))
   ][seq_len == 1][, seq_len := NULL]
   

@@ -5,6 +5,7 @@ library(arrow)
 library(tidyverse)
 library(collapse)
 
+set.seed(1)
 
 source("~/medicaid/OUD_tx_state_year_variability//R/helpers.R")
 cohort <- load_data("hillary_cohort_with_exclusions.fst", drv_root)
@@ -22,9 +23,9 @@ demo <- right_join(demo, cohort) |>
 
 state <-
   fselect(demo, BENE_ID, index_dt, RFRNC_YR, STATE_CD) |>
-  fsubset(year(index_dt) == as.numeric(RFRNC_YR) &
-          STATE_CD != "MD") |>
-  fselect(BENE_ID, STATE_CD)
+  fsubset(year(index_dt) == as.numeric(RFRNC_YR)) |>
+  group_by(BENE_ID) |>
+  summarise(STATE_CD = first(STATE_CD))
 
 cohort <- cohort |> 
   join(state, how = "left") |>
