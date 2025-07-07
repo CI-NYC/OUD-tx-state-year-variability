@@ -15,7 +15,7 @@ library(yaml)
 source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 
 # Source ICD codes
-codes <- read_yaml("~/medicaid/low-back-therapies/data/public/oud_codes.yml")$hillary
+codes <- read_yaml("~/medicaid/OUD_tx_state_year_variability/data/public/oud_codes.yml")$hillary
 
 ########################################## Load moud data
 bup <- load_data("moud_bup_intervals.fst", drv_root)
