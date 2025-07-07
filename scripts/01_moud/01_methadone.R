@@ -17,7 +17,7 @@ library(data.table)
 
 source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 
-cohort <- load_data("hillary_cohort_with_exclusions.fst", drv_root)
+cohort <- load_data("cohort_oud_hillary.fst", drv_root)
 
 otl <- open_otl()
 

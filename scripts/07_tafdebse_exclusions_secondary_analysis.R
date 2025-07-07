@@ -3,6 +3,8 @@
 # Author: Nick Williams
 # Purpose:
 # Notes: Modified from https://github.com/CI-NYC/disability-chronic-pain/blob/main/scripts/02_clean_tafdebse.R
+#         The only continuous enrollment criteria for this cohort is for the 6-month washout period. (Does not require 14 days,
+#         44 days or 180 days of the follow-up period)
 # -------------------------------------
 
 library(collapse)

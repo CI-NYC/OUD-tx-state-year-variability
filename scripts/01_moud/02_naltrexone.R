@@ -16,7 +16,7 @@ library(yaml)
 
 source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 
-cohort <- load_data("hillary_cohort_with_exclusions.fst", drv_root)
+cohort <- load_data("cohort_oud_hillary.fst", drv_root)
 
 hcpcs <- read_yaml("~/medicaid/low-back-therapies/data/public/hcpcs_codes.yml")$naltrexone
 

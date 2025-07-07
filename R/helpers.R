@@ -9,7 +9,7 @@
 library(arrow)
 library(fst)
 
-drv_root <- "/mnt/general-data/disability/tx_state_year_variability/"
+drv_root <- "/mnt/general-data/disability/tx_state_year_variability"
 
 write_data <- function(data, file, dir) {
   write_fst(data, file.path(dir, file))

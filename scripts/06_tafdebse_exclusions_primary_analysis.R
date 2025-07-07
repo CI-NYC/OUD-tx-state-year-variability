@@ -53,12 +53,12 @@ demo <- right_join(demo, cohort) |>
 #   distinct()
 
 exclusion_md <-
-  fselect(demo, BENE_ID, index_dt, RFRNC_YR, STATE_CD) |>
-  fsubset(year(index_dt) == as.numeric(RFRNC_YR)) |>
+  select(demo, BENE_ID, index_dt, RFRNC_YR, STATE_CD) |>
+  filter(year(index_dt) == as.numeric(RFRNC_YR)) |>
   group_by(BENE_ID) |>
   summarise(exclusion_maryland =  as.numeric(any("MD" == STATE_CD)))
 
-exclusion_md <- fselect(cohort, BENE_ID) |> 
+exclusion_md <- select(cohort, BENE_ID) |> 
   join(exclusion_md, how = "left")
 
 # age ---------------------------------------------------------------------

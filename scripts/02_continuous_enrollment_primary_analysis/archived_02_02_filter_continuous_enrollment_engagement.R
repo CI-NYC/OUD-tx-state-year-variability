@@ -18,11 +18,12 @@ source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 
 # Load washout dates
 washout <- load_data("cohort_oud_hillary.fst", drv_root) |> as.data.table() |>
+  filter(exclusion_nov17_washout == 0) |>
   select(BENE_ID, washout_start_dt, index_dt)
 
 # Load temporary files for 01_01_filter_continuous_enrollment.R
 files <- 
-  file.path(drv_root, "tmp_washout") |> 
+  file.path(drv_root, "tmp_engagement") |> 
   list.files(full.names = TRUE)
 
 #' Creates continuous enrollment periods
@@ -92,7 +93,7 @@ for (i in seq_along(files)) {
   write_data(
     valid_periods, 
     paste0("enrollment_period_chunk_", i, ".fst"), 
-    file.path(drv_root, "valid_enrollment_periods_washout")
+    file.path(drv_root, "valid_enrollment_periods_engagement")
   )
 }
 
@@ -102,7 +103,7 @@ gc()
 plan(sequential)
 
 cohort <- 
-  file.path(drv_root, "valid_enrollment_periods_washout") |> 
+  file.path(drv_root, "valid_enrollment_periods_engagement") |> 
   list.files(full.names = TRUE) |> 
   lapply(\(x) read_fst(x, columns = "BENE_ID", as.data.table = TRUE)) |> 
   rbindlist()
@@ -110,4 +111,4 @@ cohort <-
 washout <- merge(washout, cohort)
 
 # export
-write_data(distinct(washout), "hillary_washout_continuous_enrollment_dts.fst", drv_root)
+write_data(washout, "hillary_engagement_washout_continuous_enrollment_dts.fst", drv_root)

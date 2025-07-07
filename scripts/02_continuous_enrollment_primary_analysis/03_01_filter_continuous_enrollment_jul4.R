@@ -47,7 +47,7 @@ washout <- washout |>
 washout <- washout[, .(
   washout_start_dt = first(washout_start_dt),
   index_dt = first(index_dt),
-  exposure_end_dt = min(moud_start_dt + 180)
+  exposure_end_dt = min(moud_start_dt) + days(180)
 ), by = BENE_ID]
 
 

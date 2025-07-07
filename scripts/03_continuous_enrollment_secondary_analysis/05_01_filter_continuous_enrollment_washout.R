@@ -1,6 +1,7 @@
 # -------------------------------------
-# Script: 01_01_filter_continuous_enrollment.R
+# Script: 05_01_filter_continuous_enrollment.R
 # Author: Nick Williams
+#         (Modified by Anton Hung, April 2025)
 # Purpose: Split enrollment periods into chunks per beneficiary
 # Notes: This is checking whether patients are enrolled from their washout_start_dt
 #         until 14 days after their first OUD diagnosis.
