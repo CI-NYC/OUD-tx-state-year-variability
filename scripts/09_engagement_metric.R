@@ -1,10 +1,10 @@
 # -------------------------------------
-# Script: 08_mediator_physical_therapy.R
-# Author: Nick Williams
-# Updated:
-# Purpose: Creates an indicator variable for whether or not an observation in
-#   the analysis cohort had a claim for physical therapy
-#   during the mediator period.
+# Script: engagement_metric
+# Author: Anton Hung
+# Purpose: Computing engagement metric variable
+#          Numerator: those who initated MOUD within 14 days of OUD, then 
+#          engage in >=2 OUD related services within 30 days of MOUD initiation
+#          Denominator: those who were continuously enrolled for 44 days after OUD
 # Notes:
 # -------------------------------------
 

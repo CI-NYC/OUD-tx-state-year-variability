@@ -1,3 +1,10 @@
+# -------------------------------------
+# Script: urbanicity
+# Author: Anton Hung
+# Purpose: Determine which urbanicity category beneficiaries fall under - urban, 
+#           suburban or rural - based on RUCC county metrics.
+# Notes:
+# -------------------------------------
 
 library(dplyr)
 library(data.table)

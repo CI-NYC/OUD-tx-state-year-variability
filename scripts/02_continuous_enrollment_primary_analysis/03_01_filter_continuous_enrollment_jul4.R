@@ -3,7 +3,8 @@
 # Author: Nick Williams
 # Purpose: Split enrollment periods into chunks per beneficiary
 # Notes: This is checking whether patients are enrolled from their washout_start_dt
-#         until 180 days after their first OUD diagnosis.
+#         until 180 days after their MOUD initiation (rather than OUD diagnosis, 
+#         unlike the dec17 and nov17)
 #         Also note, in this cohort, the latest allowed index date is July 4th 
 # -------------------------------------
 

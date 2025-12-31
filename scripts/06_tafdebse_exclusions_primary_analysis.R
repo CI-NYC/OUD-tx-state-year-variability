@@ -1,7 +1,7 @@
 # -------------------------------------
 # Script: 06_tafdebse_exclusions.R
-# Author: Nick Williams
-# Purpose:
+# Author: Anton Hung
+# Purpose: Creating exclusion flags for Maryland, age outside of 19-65, and dual eligibility
 # Notes: Modified from https://github.com/CI-NYC/disability-chronic-pain/blob/main/scripts/02_clean_tafdebse.R
 # -------------------------------------
 

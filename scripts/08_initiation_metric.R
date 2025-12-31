@@ -1,3 +1,11 @@
+# -------------------------------------
+# Script: initiation_metric
+# Author: Anton Hung
+# Purpose: Computing initiation metric variable
+#          Numerator: those who initiate moud within 14 days of OUD
+#          Denominator: those who were continuously enrolled for 14 days after OUD
+# Notes: moud includes buprenorphine, methadone, naltrexone
+# -------------------------------------
 
 source("~/medicaid/OUD_tx_state_year_variability/R/helpers.R")
 

@@ -1,8 +1,12 @@
 # -------------------------------------
-# Script: 04_days_supply.R
-# Author: Shodai Inose
-# Purpose: Calculate the nonoverlapping total days supply of opioids (i.e., a value bounded between 1 and 91)
-# Notes: Modified from https://github.com/CI-NYC/medicaid-treatments-oud-risk/blob/main/scripts/01_create_treatments/02_06mo/09_treatment_proportion_days_covered.R
+# Script: 
+# Author: Anton Hung (adapted from Shodai Inose)
+# Purpose: Compute retention metric variable
+#          Numerator: those who remain moud continuously for 180 days after 
+#                     initiation, allowing for 7 day gaps.
+#          Denominator: those who initated moud within 14 days and remain 
+#                       continuously enrolled for 180 days after moud.
+# Notes: Modified from https://github.com/CI-NYC/everything-local-lmtp/blob/main/scripts/00_create_cohort/05_exposure/03_days_supply.R
 # -------------------------------------
 
 library(tidyverse)

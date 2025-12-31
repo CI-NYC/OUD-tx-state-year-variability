@@ -1,7 +1,14 @@
 # -------------------------------------
 # Script: 00_hillary.R
-# Author: Nick Williams
-# Purpose: Identify OUD using Hillary codes
+# Author: Anton Hung
+# Purpose: 1) Identify OUD using Hillary codes.
+#          2) Due to the nature of this study looking at only 2019 claims, we evaluate
+#             each beneficiary's membership into three non-mutually-exclusive categories:
+#             i) OUD prior to Dec 17 - ensures at least 14 days of follow-up
+#             ii) OUD prior to Nov 17 - ensures at least 44 days of follow-up
+#             iii) OUD and subsequent MOUD prior to Jul 4 - ensures initiation of 
+#                    MOUD *after* OUD diagnosis AND at least 180 days of follow-up.
+# 
 # Notes:
 # -------------------------------------
 
@@ -72,12 +79,6 @@ oth_hillary <-
 oud_hillary <- 
   bind_rows(iph_hillary, oth_hillary) |> 
   distinct()
-
-# oud_hillary <- 
-#   inner_join(oud_hillary, cohort) |> 
-#   filter(oud_hillary_dt %within% interval(washout_start_dt, exposure_end_dt + 455))
-
-# write_data(oud_hillary, "all_oud_hillary.fst", drv_root)
 
 
 

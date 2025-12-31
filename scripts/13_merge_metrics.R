@@ -1,3 +1,10 @@
+# -------------------------------------
+# Script: merge_metrics
+# Author: Anton Hung
+# Purpose: Use the three metrics, initiation, engagement, retention, to generate final plots
+# Notes:
+# -------------------------------------
+
 library(arrow)
 library(data.table)
 library(yaml)

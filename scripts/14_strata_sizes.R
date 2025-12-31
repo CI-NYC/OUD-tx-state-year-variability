@@ -1,3 +1,10 @@
+# -------------------------------------
+# Script: merge_metrics
+# Author: Anton Hung
+# Purpose: Generate supplementary tables showing numerator counts, denominator counts, and metric counts.
+# Notes:
+# -------------------------------------
+
 library(arrow)
 library(data.table)
 library(yaml)
