@@ -160,46 +160,47 @@ p <- ggplot(metrics_by_state, aes(x = `Proportion (%)`,
   xlab("Percentage") +
   facet_wrap(~ metric, nrow = 1, ncol = 4) +
   theme_light() +
-  theme(strip.text = element_text(face = "bold", color = "black"),
+  theme(text = element_text(family = "Arial"),
+        strip.text = element_text(face = "bold", color = "black"),
         axis.text.y = element_text(face = "bold"),
         panel.grid.major.y = element_blank())
 
 p
 
 
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/metrics_by_state.png", p, height = 6, width = 8.5)
+ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/metrics_by_state.tiff", p, height = 5.1, width = 7.225, dpi=300, compression="lzw")
 
-p <- ggplot(metrics_by_group, aes(x = initiation_prop, y = reorder(STATE_CD, desc(initiation_prop)))) +
-  geom_bar(stat="identity") +
-  ylab("State") +
-  # xlab("Percentage of patients who initated MOUD") +
-  xlab("Initiation metric (%)") +
-  theme_light()
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/initation_prop.png", p, height = 5, width = 8)
-
-p <- ggplot(metrics_by_group, aes(x = engagement_prop, y = reorder(STATE_CD, desc(engagement_prop)))) +
-  geom_bar(stat="identity") +
-  ylab("State") +
-  # xlab("Percentage of patients who engaged in care") +
-  xlab("Engagement metric (%)") +
-  theme_light()
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/engagement_prop.png", p, height = 5, width = 8)
-
-p <- ggplot(metrics_by_group, aes(x = retention_prop, y = reorder(STATE_CD, desc(retention_prop)))) +
-  geom_bar(stat="identity") +
-  ylab("State") +
-  # xlab("Percentage of patients who received a continuous >180 days supply of MOUD") +
-  xlab("Retention metric (%)") +
-  theme_light()
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/retention_prop.png", p, height = 5, width = 8)
-
-p <- ggplot(metrics_by_group, aes(x = counseling_prop, y = reorder(STATE_CD, desc(counseling_prop)))) +
-  geom_bar(stat="identity") +
-  ylab("State") +
-  # xlab("Percentage of patients who received mental health counseling") +
-  xlab("Counseling metric (%)") +
-  theme_light()
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/counseling_prop.png", p, height = 5, width = 8)
+# p <- ggplot(metrics_by_group, aes(x = initiation_prop, y = reorder(STATE_CD, desc(initiation_prop)))) +
+#   geom_bar(stat="identity") +
+#   ylab("State") +
+#   # xlab("Percentage of patients who initated MOUD") +
+#   xlab("Initiation metric (%)") +
+#   theme_light()
+# ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/initation_prop.pdf", p, height = 5, width = 8)
+# 
+# p <- ggplot(metrics_by_group, aes(x = engagement_prop, y = reorder(STATE_CD, desc(engagement_prop)))) +
+#   geom_bar(stat="identity") +
+#   ylab("State") +
+#   # xlab("Percentage of patients who engaged in care") +
+#   xlab("Engagement metric (%)") +
+#   theme_light()
+# ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/engagement_prop.pdf", p, height = 5, width = 8)
+# 
+# p <- ggplot(metrics_by_group, aes(x = retention_prop, y = reorder(STATE_CD, desc(retention_prop)))) +
+#   geom_bar(stat="identity") +
+#   ylab("State") +
+#   # xlab("Percentage of patients who received a continuous >180 days supply of MOUD") +
+#   xlab("Retention metric (%)") +
+#   theme_light()
+# ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/retention_prop.pdf", p, height = 5, width = 8)
+# 
+# p <- ggplot(metrics_by_group, aes(x = counseling_prop, y = reorder(STATE_CD, desc(counseling_prop)))) +
+#   geom_bar(stat="identity") +
+#   ylab("State") +
+#   # xlab("Percentage of patients who received mental health counseling") +
+#   xlab("Counseling metric (%)") +
+#   theme_light()
+# ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/counseling_prop.pdf", p, height = 5, width = 8)
 
 
 
@@ -223,31 +224,32 @@ p <- ggplot(metrics_by_urbanicity, aes(x = `Proportion (%)`, y = urbanicity)) +
   xlab("Percentage") +
   facet_wrap(~ metric, nrow = 1, ncol = 4) +
   theme_light() +
-  theme(strip.text = element_text(face = "bold", color = "black"),
+  theme(text = element_text(family = "Arial"),
+        strip.text = element_text(face = "bold", color = "black"),
         axis.text.y = element_text(face = "bold"),
         panel.grid.major.y = element_blank())
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/metrics_by_urbanicity.png", p, height = 3, width = 8.5)
+ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/metrics_by_urbanicity.tiff", p, height = 2.55, width = 7.225, dpi=300,compression="lzw")
 
-p <- ggplot(metrics_by_urbanicity, aes(x = engagement_prop, y = urbanicity)) +
-  geom_bar(stat="identity") +
-  ylab("Urbanicity") +
-  xlab("Engagement metric (%)") +
-  theme_light()
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/engagement_prop_by_urbanicity.png", p, height = 5, width = 8)
-
-p <- ggplot(metrics_by_urbanicity, aes(x = retention_prop, y = urbanicity)) +
-  geom_bar(stat="identity") +
-  ylab("Urbanicity") +
-  xlab("Retention metric (%)") +
-  theme_light()
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/retention_prop_by_urbanicity.png", p, height = 5, width = 8)
-
-p <- ggplot(metrics_by_urbanicity, aes(x = counseling_prop, y = urbanicity)) +
-  geom_bar(stat="identity") +
-  ylab("Urbanicity") +
-  xlab("Counseling metric (%)") +
-  theme_light()
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/counseling_prop_by_urbanicity.png", p, height = 5, width = 8)
+# p <- ggplot(metrics_by_urbanicity, aes(x = engagement_prop, y = urbanicity)) +
+#   geom_bar(stat="identity") +
+#   ylab("Urbanicity") +
+#   xlab("Engagement metric (%)") +
+#   theme_light()
+# ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/engagement_prop_by_urbanicity.png", p, height = 5, width = 8)
+# 
+# p <- ggplot(metrics_by_urbanicity, aes(x = retention_prop, y = urbanicity)) +
+#   geom_bar(stat="identity") +
+#   ylab("Urbanicity") +
+#   xlab("Retention metric (%)") +
+#   theme_light()
+# ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/retention_prop_by_urbanicity.png", p, height = 5, width = 8)
+# 
+# p <- ggplot(metrics_by_urbanicity, aes(x = counseling_prop, y = urbanicity)) +
+#   geom_bar(stat="identity") +
+#   ylab("Urbanicity") +
+#   xlab("Counseling metric (%)") +
+#   theme_light()
+# ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/counseling_prop_by_urbanicity.png", p, height = 5, width = 8)
 
 
 
