@@ -134,7 +134,8 @@ p <- ggplot(metrics_by_state, aes(x = `Proportion (%)`,
         x = `Proportion (%)` * 1.1),
     hjust = -0.1,
     vjust = 0.5,
-    size = 3,
+    size = 3.5,
+    family="Arial",
     color = "black"
   ) +
   # Labels for bars big enough to hold the text inside:
@@ -145,7 +146,8 @@ p <- ggplot(metrics_by_state, aes(x = `Proportion (%)`,
         x = `Proportion (%)` * 0.95),
     hjust = 1,
     vjust = 0.5,
-    size = 3,
+    size = 3.5,
+    family="Arial",
     color = "white"
   ) +
   # For rows where the metric is NA, show an asterisk:
@@ -168,7 +170,7 @@ p <- ggplot(metrics_by_state, aes(x = `Proportion (%)`,
 p
 
 
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/metrics_by_state.tiff", p, height = 5.1, width = 7.225, dpi=300, compression="lzw")
+ggsave("~/medicaid/OUD_tx_state_year_variability/data/public/metrics_by_state.tiff", p, height = 5, width = 7.5, dpi=300, compression="lzw")
 
 # p <- ggplot(metrics_by_group, aes(x = initiation_prop, y = reorder(STATE_CD, desc(initiation_prop)))) +
 #   geom_bar(stat="identity") +
@@ -217,7 +219,7 @@ p <- ggplot(metrics_by_urbanicity, aes(x = `Proportion (%)`, y = urbanicity)) +
         x = `Proportion (%)` * 0.95),
     hjust = 1,
     vjust = 0.5,
-    size = 5,
+    size = 4,
     color = "white"
   ) +
   ylab(NULL) +
@@ -228,7 +230,7 @@ p <- ggplot(metrics_by_urbanicity, aes(x = `Proportion (%)`, y = urbanicity)) +
         strip.text = element_text(face = "bold", color = "black"),
         axis.text.y = element_text(face = "bold"),
         panel.grid.major.y = element_blank())
-ggsave("~/medicaid/OUD_tx_state_year_variability/data/private/metrics_by_urbanicity.tiff", p, height = 2.55, width = 7.225, dpi=300,compression="lzw")
+ggsave("~/medicaid/OUD_tx_state_year_variability/data/public/metrics_by_urbanicity.tiff", p, height = 2.7, width = 7.5, dpi=300,compression="lzw")
 
 # p <- ggplot(metrics_by_urbanicity, aes(x = engagement_prop, y = urbanicity)) +
 #   geom_bar(stat="identity") +
